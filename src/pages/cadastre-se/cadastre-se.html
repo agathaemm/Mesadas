@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-list>
-    <form #registerForm="ngForm" (submit)="onRegister(RegisterForm)" padding-left>
+    <form #registerForm="ngForm" (submit)="onRegister(registerForm)" padding-left>
       <ion-item>
         <ion-label floating><ion-icon name="ios-person" margin-right></ion-icon>Nome</ion-label>
         <ion-input type="text" [(ngModel)]="user.name" name="name" #name="ngModel" required spellcheck="false"></ion-input>
@@ -39,7 +39,7 @@
         <ion-input type="password" [(ngModel)]="user.confirmPassword" name="confirmacao" #confirmacao="ngModel" required autocapitalize="off"></ion-input>
       </ion-item>
       <ion-badge [hidden]="confirmacao.valid || !submitted" color="danger" margin-top>O campo confirmar senha é obrigatorio</ion-badge>
-
+      <ion-badge [hidden]="!errorPass" color="danger">{{errorPass}}</ion-badge>
       <ion-row>
         <ion-col>
           <a ion-button outline block navPop>Voltar</a>
